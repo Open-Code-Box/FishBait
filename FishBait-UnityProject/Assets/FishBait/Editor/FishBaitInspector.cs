@@ -31,7 +31,7 @@ namespace FishBait
 
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            GUILayout.Label(Resources.Load<Texture>("FishBait"), GUILayout.Height(50), GUILayout.Width(100));
+            GUILayout.Label(Resources.Load<Texture>("fishbait_Logo"), GUILayout.Height(150), GUILayout.Width(200));
             GUILayout.FlexibleSpace();
             GUILayout.EndHorizontal();
             

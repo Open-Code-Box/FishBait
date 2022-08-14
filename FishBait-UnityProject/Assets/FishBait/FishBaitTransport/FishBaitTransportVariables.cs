@@ -43,13 +43,13 @@ namespace FishBait
 
         // Server list variables
         public UnityEvent serverListUpdated;
-        public List<object> relayServerList { private set; get; } = new List<object>();
+        public List<Room> relayServerList { private set; get; } = new List<Room>();
 
         // Current Server Information
         public string serverStatus = "Not Started.";
         public string serverId = string.Empty;
 
-        private LRMDirectConnectModule _directConnectModule;
+        private FishBaitDirectConnectModule _directConnectModule;
 
         public FishBaitRegions region = FishBaitRegions.NorthAmerica;
         private byte[] _clientSendBuffer;

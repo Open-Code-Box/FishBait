@@ -29,6 +29,8 @@ public class FishBaitDirectConnectModule : MonoBehaviour
             return;
         }
 
+        directConnectTransport.OnRemoteConnectionState += RemoteConnectionState;
+
         directConnectTransport.OnServerConnectionState += ServerConnectionState;
         directConnectTransport.OnServerReceivedData += ServerDataRecived;
 

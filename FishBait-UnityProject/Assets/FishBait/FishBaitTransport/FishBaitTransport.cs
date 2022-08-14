@@ -19,6 +19,9 @@ namespace FishBait
     public partial class FishBaitTransport : Transport
     {
         #region Forward everything to Transport
+
+        
+
         public override event Action<ClientConnectionStateArgs> OnClientConnectionState
         {
             add
@@ -187,14 +190,6 @@ namespace FishBait
         {
             transport.SetPort(port);
         }
-
-        public enum OpCodes
-        {
-            Default = 0, RequestID = 1, JoinServer = 2, SendData = 3, GetID = 4, ServerJoined = 5, GetData = 6, CreateRoom = 7, ServerLeft = 8, PlayerDisconnected = 9, RoomCreated = 10,
-            LeaveRoom = 11, KickPlayer = 12, AuthenticationRequest = 13, AuthenticationResponse = 14, Authenticated = 17, UpdateRoomData = 18, ServerConnectionData = 19, RequestNATConnection = 20,
-            DirectConnectIP = 21
-        }
-
     }
 }
 
