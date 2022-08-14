@@ -2,8 +2,6 @@
 
 # FishBait
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/954d1b30c2da8f61037e/maintainability)](https://codeclimate.com/github/Derek-R-S/Light-Reflective-Mirror/maintainability)
-
 A relay transport for FishNet Networking based on Light Reflective Mirror V12.
 
 ## What
