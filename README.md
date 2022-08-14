@@ -1,6 +1,6 @@
 
 
-![Logo](FishBait.png)
+![Logo](FishBait_Logo.png)
 
 
 
