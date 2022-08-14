@@ -46,8 +46,6 @@ namespace LightReflectiveMirror
                             var sendBuffer = _sendBuffers.Rent(1);
                             sendBuffer.WriteByte(ref writePos, (byte)OpCodes.Authenticated);
                             Program.transport.ServerSend(clientId, 0, new ArraySegment<byte>(sendBuffer, 0, writePos));
-                            
-                            _sendBuffers.Return(sendBuffer);
                         }
                         else
                         {
@@ -60,15 +58,8 @@ namespace LightReflectiveMirror
 
                 switch (opcode)
                 {
-                    case OpCodes.CreateRoom: // bruh
-                        CreateRoom(clientId, data.ReadInt   (ref pos), 
-                                             data.ReadString(ref pos), 
-                                             data.ReadBool  (ref pos), 
-                                             data.ReadString(ref pos), 
-                                             data.ReadBool  (ref pos), 
-                                             data.ReadString(ref pos), 
-                                             data.ReadBool  (ref pos), 
-                                             data.ReadInt   (ref pos));
+                    case OpCodes.CreateRoom:
+                        CreateRoom(clientId, data.ReadInt(ref pos), data.ReadString(ref pos), data.ReadBool(ref pos), data.ReadString(ref pos), data.ReadBool(ref pos), data.ReadString(ref pos), data.ReadBool(ref pos), data.ReadInt(ref pos));
                         break;
                     case OpCodes.RequestID:
                         SendClientID(clientId);
@@ -109,9 +100,7 @@ namespace LightReflectiveMirror
             }
             catch
             {
-                // sent invalid data, boot them hehe
-                Program.WriteLogMessage($"Client {clientId} sent bad data! Removing from LRM node.");
-                Program.transport.ServerDisconnect(clientId);
+                // Do Nothing. Client probably sent some invalid data.
             }
         }
 

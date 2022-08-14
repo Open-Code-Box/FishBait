@@ -13,11 +13,11 @@ namespace LightReflectiveMirror
         /// <param name="clientId">The client requesting to create a room</param>
         /// <param name="maxPlayers">The maximum amount of players for this room</param>
         /// <param name="serverName">The name for the server</param>
-        /// <param name="isPublic">Whether or not the server should show up on the server list</param>
+        /// <param name="isPublic">Weather or not the server should show up on the server list</param>
         /// <param name="serverData">Extra data the host can include</param>
-        /// <param name="useDirectConnect">Whether or not, the host is capable of doing direct connections</param>
+        /// <param name="useDirectConnect">Weather or not, the host is capable of doing direct connections</param>
         /// <param name="hostLocalIP">The hosts local IP</param>
-        /// <param name="useNatPunch">Whether or not, the host is supporting NAT Punch</param>
+        /// <param name="useNatPunch">Weather or not, the host is supporting NAT Punch</param>
         /// <param name="port">The port of the direct connect transport on the host</param>
         private void CreateRoom(int clientId, int maxPlayers, string serverName, bool isPublic, string serverData, bool useDirectConnect, string hostLocalIP, bool useNatPunch, int port)
         {
@@ -98,7 +98,7 @@ namespace LightReflectiveMirror
                         {
                             sendJoinPos = 0;
                             sendJoinBuffer.WriteByte(ref sendJoinPos, (byte)OpCodes.DirectConnectIP);
-
+                            Console.WriteLine(Program.instance.NATConnections[clientId].Address.ToString());
                             sendJoinBuffer.WriteString(ref sendJoinPos, Program.instance.NATConnections[clientId].Address.ToString());
                             sendJoinBuffer.WriteInt(ref sendJoinPos, Program.instance.NATConnections[clientId].Port);
                             sendJoinBuffer.WriteBool(ref sendJoinPos, true);
@@ -145,7 +145,6 @@ namespace LightReflectiveMirror
         {
             for (int i = 0; i < rooms.Count; i++)
             {
-                // if host left
                 if (rooms[i].hostId == clientId)
                 {
                     int pos = 0;
@@ -168,7 +167,6 @@ namespace LightReflectiveMirror
                 }
                 else
                 {
-                    // if the person that tried to kick wasnt host and it wasnt the client leaving on their own
                     if (requiredHostId != -1 && rooms[i].hostId != requiredHostId)
                         continue;
 
@@ -182,19 +180,6 @@ namespace LightReflectiveMirror
 
                         Program.transport.ServerSend(rooms[i].hostId, 0, new ArraySegment<byte>(sendBuffer, 0, pos));
                         _sendBuffers.Return(sendBuffer);
-
-                        // temporary solution to kicking bug
-                        // this tells the local player that got kicked that he, well, got kicked.
-                        pos = 0;
-                        sendBuffer = _sendBuffers.Rent(1);
-
-                        sendBuffer.WriteByte(ref pos, (byte)OpCodes.ServerLeft);
-
-                        Program.transport.ServerSend(clientId, 0, new ArraySegment<byte>(sendBuffer, 0, pos));
-                        _sendBuffers.Return(sendBuffer);
-
-                        //end temporary solution
-
                         Endpoint.RoomsModified();
                         _cachedClientRooms.Remove(clientId);
                     }

@@ -25,9 +25,7 @@ namespace LightReflectiveMirror
 
             GetPublicIP();
 
-            bool noConfig = bool.Parse(Environment.GetEnvironmentVariable("NO_CONFIG") ?? "false");
-
-            if (!File.Exists(CONFIG_PATH) && !noConfig)
+            if (!File.Exists(CONFIG_PATH))
             {
                 File.WriteAllText(CONFIG_PATH, JsonConvert.SerializeObject(new Config(), Formatting.Indented));
                 WriteLogMessage("A config.json file was generated. Please configure it to the proper settings and re-run!", ConsoleColor.Yellow);
@@ -36,36 +34,14 @@ namespace LightReflectiveMirror
             }
             else
             {
-                if (!noConfig)
-                {
-                    conf = JsonConvert.DeserializeObject<Config>(File.ReadAllText(CONFIG_PATH));
-                    ConfigureDocker();
-                }
-                else
-                {
-                    conf = new Config();
-                    conf.TransportClass = Environment.GetEnvironmentVariable("TRANSPORT_CLASS") ?? "kcp2k.KcpTransport";
-                    conf.AuthenticationKey = Environment.GetEnvironmentVariable("AUTH_KEY") ?? "Secret Auth Key";
-                    conf.TransportPort = ushort.Parse(Environment.GetEnvironmentVariable("TRANSPORT_PORT") ?? "7777");
-                    conf.UpdateLoopTime = int.Parse(Environment.GetEnvironmentVariable("UPDATE_LOOP_TIME") ?? "10");
-                    conf.UpdateHeartbeatInterval = int.Parse(Environment.GetEnvironmentVariable("UPDATE_HEARTBEAT_INTERVAL") ?? "100");
-                    conf.RandomlyGeneratedIDLength = int.Parse(Environment.GetEnvironmentVariable("RANDOMLY_GENERATED_ID_LENGTH") ?? "5");
-                    conf.UseEndpoint = bool.Parse(Environment.GetEnvironmentVariable("USE_ENDPOINT") ?? "true");
-                    conf.EndpointPort = ushort.Parse(Environment.GetEnvironmentVariable("ENDPOINT_PORT") ?? "8080");
-                    conf.EndpointServerList = bool.Parse(Environment.GetEnvironmentVariable("ENDPOINT_SERVERLIST") ?? "true");
-                    conf.EnableNATPunchtroughServer = bool.Parse(Environment.GetEnvironmentVariable("ENABLE_NATPUNCH_SERVER") ?? "true");
-                    conf.NATPunchtroughPort = ushort.Parse(Environment.GetEnvironmentVariable("NAT_PUNCH_PORT") ?? "7776");
-                    conf.UseLoadBalancer = bool.Parse(Environment.GetEnvironmentVariable("USE_LOAD_BALANCER") ?? "false");
-                    conf.LoadBalancerAuthKey = Environment.GetEnvironmentVariable("LOAD_BALANCER_AUTH_KEY") ?? "AuthKey";
-                    conf.LoadBalancerAddress = Environment.GetEnvironmentVariable("LOAD_BALANCER_ADDRESS") ?? "127.0.0.1";
-                    conf.LoadBalancerPort = ushort.Parse(Environment.GetEnvironmentVariable("LOAD_BALANCER_PORT") ?? "7070");
-                    conf.LoadBalancerRegion = (LRMRegions)int.Parse(Environment.GetEnvironmentVariable("LOAD_BALANCER_REGION") ?? "1");
-                }
+                conf = JsonConvert.DeserializeObject<Config>(File.ReadAllText(CONFIG_PATH));
+
+                ConfigureDocker();
 
                 WriteLogMessage("Loading Assembly... ", ConsoleColor.White, true);
                 try
                 {
-                    var asm = Assembly.LoadFile(Path.GetFullPath(Config.GetTransportDLL()));
+                    var asm = Assembly.LoadFile(Path.GetFullPath(conf.TransportDLL));
                     WriteLogMessage($"OK", ConsoleColor.Green);
 
                     WriteLogMessage("\nLoading Transport Class... ", ConsoleColor.White, true);

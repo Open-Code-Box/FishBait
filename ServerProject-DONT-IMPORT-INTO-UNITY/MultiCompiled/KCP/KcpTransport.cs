@@ -43,28 +43,13 @@ namespace kcp2k
         {
 
             KCPConfig conf = new KCPConfig();
-
-            bool noConfig = bool.Parse(Environment.GetEnvironmentVariable("NO_CONFIG") ?? "false");
-
-            if (!File.Exists("KCPConfig.json") && !noConfig)
+            if (!File.Exists("KCPConfig.json"))
             {
                 File.WriteAllText("KCPConfig.json", JsonConvert.SerializeObject(conf, Formatting.Indented));
             }
             else
             {
-                if (noConfig)
-                {
-                    conf = new KCPConfig();
-                    conf.NoDelay = bool.Parse(Environment.GetEnvironmentVariable("KCP_NODELAY") ?? "true");
-                    conf.Interval = uint.Parse(Environment.GetEnvironmentVariable("KCP_INTERVAL") ?? "10");
-                    conf.FastResend = int.Parse(Environment.GetEnvironmentVariable("KCP_FAST_RESEND") ?? "2");
-                    conf.CongestionWindow = bool.Parse(Environment.GetEnvironmentVariable("KCP_CONGESTION_WINDOW") ?? "false");
-                    conf.SendWindowSize = uint.Parse(Environment.GetEnvironmentVariable("KCP_SEND_WINDOW_SIZE") ?? "4096");
-                    conf.ReceiveWindowSize = uint.Parse(Environment.GetEnvironmentVariable("KCP_RECEIVE_WINDOW_SIZE") ?? "4096");
-                    conf.ConnectionTimeout = int.Parse(Environment.GetEnvironmentVariable("KCP_CONNECTION_TIMEOUT") ?? "10000");
-                }
-                else 
-                    conf = JsonConvert.DeserializeObject<KCPConfig>(File.ReadAllText("KCPConfig.json"));
+                conf = JsonConvert.DeserializeObject<KCPConfig>(File.ReadAllText("KCPConfig.json"));
             }
 
             NoDelay = conf.NoDelay;
