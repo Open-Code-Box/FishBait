@@ -1,12 +1,10 @@
 ![Logo](FishBait_Logo.png)
 
-# Light Reflective Mirror
+# FishBait
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/954d1b30c2da8f61037e/maintainability)](https://codeclimate.com/github/Derek-R-S/Light-Reflective-Mirror/maintainability)
 
 LRM Node / MultiCompiled
-
-
 
 ## What
 
@@ -105,8 +103,6 @@ Derek - For creating Light Reflecting Mirror
 FirstGearGames - For creating FishNet
 
 You - For reading the README and checking out FishBait
-
-
 
 ### LMR Credits
 
