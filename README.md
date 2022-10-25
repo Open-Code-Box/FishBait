@@ -1,6 +1,6 @@
 ![Logo](fishbait_Logo.png)
 
-## Disclaimer
+# Disclaimer
 Right now FishBait is not working, there is still a lot of work that needs to be done, if you need a relay server now I recommend using [Master Server Toolkit](https://master-toolkit.com).
 
 # FishBait
