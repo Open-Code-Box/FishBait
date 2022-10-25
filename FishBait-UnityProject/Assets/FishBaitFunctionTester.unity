@@ -497,7 +497,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1516572637330113619}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1172724428
 GameObject:
@@ -691,57 +691,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   functionDisplay: {fileID: 278665276}
---- !u!1 &1287384425
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1287384427}
-  - component: {fileID: 1287384426}
-  m_Layer: 0
-  m_Name: FishBait - Direct Connect
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1287384426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1287384425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f48f002b825cbd45a19bd96d90f9edb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _unreliableMTU: 1023
-  _ipv4BindAddress: 
-  _ipv6BindAddress: 
-  _port: 7770
-  _maximumClients: 4095
-  _clientAddress: localhost
-  _timeout: 15
---- !u!4 &1287384427
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1287384425}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1516572637330113619}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &905488192866952489
 RectTransform:
   m_ObjectHideFlags: 0
@@ -793,7 +742,6 @@ GameObject:
   - component: {fileID: 8234759579310384502}
   - component: {fileID: 1516572637330113630}
   - component: {fileID: 8234759579310384505}
-  - component: {fileID: 8234759579310384507}
   - component: {fileID: 8234759579310384506}
   m_Layer: 0
   m_Name: FishNetworkManager
@@ -815,7 +763,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5670112771492132974}
-  - {fileID: 1287384427}
   - {fileID: 1094339531}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1383,7 +1330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34e4a322dca349547989b14021da4e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transport: {fileID: 8234759579310384507}
+  Transport: {fileID: 8234759579310384506}
   _latencySimulator:
     _enabled: 0
     _simulateHost: 1
@@ -1399,48 +1346,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1516572637330113617}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21eba6e2b0a7e964eb29db14a4eae4d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 314b449d3505bd24487ba69b61c2fda5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directConnectTransport: {fileID: 1287384426}
-  showDebugLogs: 0
---- !u!114 &8234759579310384507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516572637330113617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37bf248b7e575fe4592c1ec247b10573, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transport: {fileID: 1094339530}
-  serverIP: 129.151.223.167
-  serverPort: 7777
-  endpointServerPort: 8080
-  heartBeatInterval: 3
-  connectOnAwake: 1
-  authenticationKey: Secret Auth Key
-  disconnectedFromRelay:
-    m_PersistentCalls:
-      m_Calls: []
-  connectedToRelay:
-    m_PersistentCalls:
-      m_Calls: []
-  useNATPunch: 1
-  NATPunchtroughPort: 1
-  useLoadBalancer: 0
-  loadBalancerPort: 7070
-  loadBalancerAddress: 127.0.0.1
-  serverName: My awesome server!
-  extraServerData: Map 1
-  maxServerPlayers: 10
-  isPublicServer: 1
-  serverListUpdated:
-    m_PersistentCalls:
-      m_Calls: []
-  serverStatus: Not Started.
-  serverId: 
-  region: 1
+  GlobalServerActions: 1
+  _transports:
+  - {fileID: 1094339530}

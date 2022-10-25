@@ -1,5 +1,6 @@
 using FishNet.Managing;
 using FishNet.Managing.Logging;
+using FishNet.Managing.Server;
 using FishNet.Serializing;
 using FishNet.Transporting;
 using FishNet.Utility.Extension;
@@ -18,160 +19,180 @@ namespace FishBait
     [DefaultExecutionOrder(1001)]
     public partial class FishBaitTransport : Transport
     {
-        #region Forward everything to Transport
-
-        
-
-        public override event Action<ClientConnectionStateArgs> OnClientConnectionState
+        public override bool Equals(object other)
         {
-            add
-            {
-                transport.OnClientConnectionState += value;
-            }
-
-            remove
-            {
-                transport.OnClientConnectionState -= value;
-            }
+            return base.Equals(other);
         }
 
-        public override event Action<ServerConnectionStateArgs> OnServerConnectionState
+        public override string GetClientAddress()
         {
-            add
-            {
-                transport.OnServerConnectionState += value;
-            }
-
-            remove
-            {
-                transport.OnServerConnectionState -= value;
-            }
-        }
-
-        public override event Action<RemoteConnectionStateArgs> OnRemoteConnectionState
-        {
-            add
-            {
-                transport.OnRemoteConnectionState += value;
-            }
-
-            remove
-            {
-                transport.OnRemoteConnectionState -= value;
-            }
-        }
-
-        public override event Action<ClientReceivedDataArgs> OnClientReceivedData
-        {
-            add
-            {
-                transport.OnClientReceivedData += value;
-            }
-
-            remove
-            {
-                transport.OnClientReceivedData -= value;
-            }
-        }
-
-        public override event Action<ServerReceivedDataArgs> OnServerReceivedData
-        {
-            add
-            {
-                transport.OnServerReceivedData += value;
-            }
-
-            remove
-            {
-                transport.OnServerReceivedData -= value;
-            }
+            return base.GetClientAddress();
         }
 
         public override string GetConnectionAddress(int connectionId)
         {
-            return transport.GetConnectionAddress(connectionId);
+            throw new NotImplementedException();
         }
 
         public override LocalConnectionState GetConnectionState(bool server)
         {
-            return transport.GetConnectionState(server);
+            throw new NotImplementedException();
         }
 
         public override RemoteConnectionState GetConnectionState(int connectionId)
         {
-            return transport.GetConnectionState(connectionId);
+            throw new NotImplementedException();
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override int GetMaximumClients()
+        {
+            return base.GetMaximumClients();
         }
 
         public override int GetMTU(byte channel)
         {
-            return transport.GetMTU(channel);
+            throw new NotImplementedException();
+        }
+
+        public override ushort GetPort()
+        {
+            return base.GetPort();
+        }
+
+        public override string GetServerBindAddress()
+        {
+            return base.GetServerBindAddress();
+        }
+
+        public override string GetServerBindAddress(IPAddressType addressType)
+        {
+            return base.GetServerBindAddress(addressType);
+        }
+
+        public override float GetTimeout(bool asServer)
+        {
+            return base.GetTimeout(asServer);
         }
 
         public override void HandleClientConnectionState(ClientConnectionStateArgs connectionStateArgs)
         {
-            transport.HandleClientConnectionState(connectionStateArgs);
+            throw new NotImplementedException();
         }
 
         public override void HandleClientReceivedDataArgs(ClientReceivedDataArgs receivedDataArgs)
         {
-            transport.HandleClientReceivedDataArgs(receivedDataArgs);
+            throw new NotImplementedException();
         }
 
         public override void HandleRemoteConnectionState(RemoteConnectionStateArgs connectionStateArgs)
         {
-            transport.HandleRemoteConnectionState(connectionStateArgs);
+            throw new NotImplementedException();
         }
 
         public override void HandleServerConnectionState(ServerConnectionStateArgs connectionStateArgs)
         {
-            transport.HandleServerConnectionState(connectionStateArgs);
+            throw new NotImplementedException();
         }
 
         public override void HandleServerReceivedDataArgs(ServerReceivedDataArgs receivedDataArgs)
         {
-            transport.HandleServerReceivedDataArgs(receivedDataArgs);
+            throw new NotImplementedException();
+        }
+
+        public override void Initialize(NetworkManager networkManager, int transportIndex)
+        {
+            base.Initialize(networkManager, transportIndex);
+        }
+
+        public override bool IsLocalTransport(int connectionid)
+        {
+            return base.IsLocalTransport(connectionid);
         }
 
         public override void IterateIncoming(bool server)
         {
-            transport.IterateIncoming(server);
+            throw new NotImplementedException();
         }
 
         public override void IterateOutgoing(bool server)
         {
-            transport.IterateOutgoing(server);
+            throw new NotImplementedException();
         }
 
         public override void SendToClient(byte channelId, ArraySegment<byte> segment, int connectionId)
         {
-            transport.SendToClient(channelId, segment, connectionId);
+            throw new NotImplementedException();
         }
 
         public override void SendToServer(byte channelId, ArraySegment<byte> segment)
         {
-            transport.SendToServer(channelId, segment);
+            throw new NotImplementedException();
+        }
+
+        public override void SetClientAddress(string address)
+        {
+            base.SetClientAddress(address);
+        }
+
+        public override void SetMaximumClients(int value)
+        {
+            base.SetMaximumClients(value);
+        }
+
+        public override void SetPort(ushort port)
+        {
+            base.SetPort(port);
+        }
+
+        public override void SetServerBindAddress(string address)
+        {
+            base.SetServerBindAddress(address);
+        }
+
+        public override void SetServerBindAddress(string address, IPAddressType addressType)
+        {
+            base.SetServerBindAddress(address, addressType);
+        }
+
+        public override void SetTimeout(float value, bool asServer)
+        {
+            base.SetTimeout(value, asServer);
+        }
+
+        public void SetTransportPort(ushort port)
+        {
+            transport.SetPort(port);
         }
 
         public override void Shutdown()
         {
-            transport.Shutdown();
+            throw new NotImplementedException();
         }
 
         public override bool StartConnection(bool server)
         {
-            return transport.StartConnection(server);
+            throw new NotImplementedException();
         }
 
         public override bool StopConnection(bool server)
         {
-            return transport.StopConnection(server);
+            throw new NotImplementedException();
         }
 
         public override bool StopConnection(int connectionId, bool immediately)
         {
-            return transport.StopConnection(connectionId, immediately);
+            throw new NotImplementedException();
         }
-        #endregion
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
 
 
         /// <summary>Called by Transport when a new client connected to the server.</summary>
@@ -186,10 +207,14 @@ namespace FishBait
         public Action OnClientConnected = () => Debug.LogWarning("OnClientConnected called with no handler");
         /// <summary>Called by Transport when the client disconnected from the server.</summary>
         public Action OnClientDisconnected = () => Debug.LogWarning("OnClientDisconnected called with no handler");
-        public void SetTransportPort(ushort port)
-        {
-            transport.SetPort(port);
-        }
+
+        public override event Action<ClientConnectionStateArgs> OnClientConnectionState;
+        public override event Action<ServerConnectionStateArgs> OnServerConnectionState;
+        public override event Action<RemoteConnectionStateArgs> OnRemoteConnectionState;
+        public override event Action<ClientReceivedDataArgs> OnClientReceivedData;
+        public override event Action<ServerReceivedDataArgs> OnServerReceivedData;
+
+
     }
 }
 

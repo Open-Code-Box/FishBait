@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using UnityEngine.Events;
 using UnityEngine;
 using FishNet.Transporting;
+using FishNet.Transporting.Multipass;
 
 namespace FishBait
 {

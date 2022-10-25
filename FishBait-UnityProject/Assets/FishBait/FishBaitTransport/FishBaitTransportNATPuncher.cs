@@ -3,6 +3,7 @@ using System.Net;
 using System.Collections;
 using UnityEngine;
 using FishNet.Transporting;
+using FishNet.Transporting.Multipass;
 
 namespace FishBait
 {
