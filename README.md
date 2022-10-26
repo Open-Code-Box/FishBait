@@ -9,7 +9,7 @@ A relay transport for FishNet Networking based on [Light Reflective Mirror V12](
 
 ## What
 
-FishBait is a transport FishNet Networking based on Light Reflective Mirror which relays network traffic through your own servers. This allows you to have clients host game servers and not worry about NAT/Port Forwarding, etc. There are still features I plan on adding but it still is completely stable in its current state.
+FishBait is a transport FishNet Networking based on Light Reflective Mirror which relays network traffic through your own servers. This allows you to have clients host game servers and not worry about NAT/Port Forwarding, etc. FishBait is not working yet as of now.
 
 ## Features
 
