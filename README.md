@@ -20,6 +20,12 @@ FishBait is a transport FishNet Networking based on Light Reflective Mirror whic
 * Direct Connecting
 * Load Balancing with multi-relay setup
 
+## Planed features
+
+
+* Voice chat and Text chat
+* User accounts
+
 ## How does it work?
 
 Light Reflective Mirror creator took a bit of a unique approach to this version and instead of using one fixed net library for the game to communicate with the standalone relay server, He instead made it use any transport! This allows you to make it work with WebSockets Ignorance(ENET), LiteNetLib, and all the others!
