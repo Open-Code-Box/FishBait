@@ -34,18 +34,13 @@ Disconnects from the relay will not auto-reconnect **yet**. So a dedicated host 
 
 **TBD**
 
-### How to setup LRM in unity, along with basic usage
+### How to setup FishBait in unity, along with basic usage
 
 **TBD**
 
 ## Usage (Not Out Yet)
 
-Now for the juicy part, using it. Keep in mind that this is a prototype, so if there are any problems, please report them to me. Also, PRs are always welcomed! :)
-
-First things first, you will need:
-
-* FishNet, Install that from Asset Store.
-* Download the latest release of FishBait Unity Package and put that in your project also. Download from: [Releases](https://github.com/Derek-R-S/Light-Reflective-Mirror/releases).
+**TBD**
 
 #### Client Setup
 
