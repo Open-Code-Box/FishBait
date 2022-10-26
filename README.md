@@ -5,7 +5,7 @@ Right now FishBait is not working, there is still a lot of work that needs to be
 
 # FishBait
 
-A relay transport for FishNet Networking based on Light Reflective Mirror V12.
+A relay transport for FishNet Networking based on [Light Reflective Mirror V12](https://github.com/Derek-R-S/Light-Reflective-Mirror).
 
 ## What
 
