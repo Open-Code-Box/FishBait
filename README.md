@@ -94,7 +94,7 @@ Epic is a newer transport that offers NAT punch through, and relay service for f
 
 FishBait is a self-hosted, open source, relay/NAT Punchthrough server. It's available for most platforms (PC, Mac, Linux, Android, IOS, You name it!). It does this by supporting any of FishBait's existing transports. The game developer can decide on how they want their data sent between the server and clients. With FishBait, you are going to have to host the servers yourself. FishBait also has a Load Balancer, which allows you to even out the relay usage between multiple machines, this also allows you to have regional servers and lower latency for players living in different regions. The more powerful of a server you have, the more that FishBait node can host. With some tests (All clients relayed, none NAT punched), you could get about ~400CCU on a free oracle cloud server (A1.Flex ARM ubuntu 24GB of RAM). Though, FishBait is still constantly being worked on and could have changes, rewrites, etc at any time. You are welcome to contribute if you find any bugs, just by opening a PR!
 
-So, if you are more of a self-hosting person, who wants full control of your servers, or wants a relay for a platform the others don't support. Use FishBait, if you have any questions, you can ping me on [FishNet discord](https://discord.gg/fishnetworking)! :) (||NIMFER||#8982)
+So, if you are more of a self-hosting person, who wants full control of your servers, or wants a relay for a platform the others don't support. Use FishBait, if you have any questions or need help, you can ping me on [FishNet discord](https://discord.gg/fishnetworking)! :) (||NIMFER||#8982), just don't do it in #priority-help since I don't have high enought patreon tier to type there.
 
 ## Credits
 
